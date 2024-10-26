@@ -113,16 +113,25 @@ function UnityCanvas() {
 
   return (
     <div className="">
-      <button
-        onClick={handleConnectButton}
-        className="h-10 grid place-items-center rounded-md bg-slate-400 px-4"
-      >
-        <p>Connect</p>
-      </button>
-      <p>{_account?.address}</p>
+      <div>
+        {!isConnected && <button onClick={handleConnectButton}>Connect</button>}
+
+        {isConnected && (
+          <>
+            <p>
+              Account address: <code>{_account.address}</code>
+            </p>
+            <button onClick={handleClearSessionButton}>Clear Session</button>
+          </>
+        )}
+      </div>
       <Unity
         unityProvider={unityProvider}
-        style={{ width: 360, height: 640 }}
+        style={{
+          width: "100%",
+          height: "100%",
+          aspectRatio: 360 / 640,
+        }}
         devicePixelRatio={devicePixelRatio}
       />
     </div>
