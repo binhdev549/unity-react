@@ -119,6 +119,7 @@ function UnityCanvas() {
       >
         <p>Connect</p>
       </button>
+      <p>{_account?.address}</p>
       <Unity
         unityProvider={unityProvider}
         style={{ width: 360, height: 640 }}
